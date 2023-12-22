@@ -29,9 +29,9 @@ defaults:
 jobs:
   # Build job
   build:
-    # defaults:
-    #   run:
-    #     working-directory: sairampillai
+    defaults:
+      run:
+        working-directory: ./sairampillai
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.120.4
@@ -50,21 +50,18 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
       - name: Install Node.js dependencies
-        working-directory: ./sairampillai
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-        working-directory: ./sairampillai
         run: |
           hugo \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
-        working-directory: ./sairampillai
         with:
           path: ./public
 
