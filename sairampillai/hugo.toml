@@ -1,0 +1,73 @@
+baseURL = 'https://sairampillai.github.io/'
+languageCode = 'en-us'
+title = "Sairam's Blog"
+enableEmoji = true
+enableRobotsTXT = true
+paginate = 5
+
+theme = 'github.com/canstand/compost'
+
+# required
+[build]
+_merge = 'deep'
+
+# required
+[markup]
+_merge = 'deep'
+
+# for better seo
+[minify]
+_merge = 'deep'
+
+[module]
+[[module.mounts]]
+  source = 'assets'
+  target = 'assets'
+[[module.mounts]]
+  source = "hugo_stats.json"
+  target = "assets/watching/hugo_stats.json"
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+[params]
+  colorScheme = "auto"
+
+[author]
+  name = "Sairam Pillai"
+  image = "img/author.jpg"
+  links = [
+    { twitter = "https://twitter.com/SairamPillai95" },
+    { linkedin = "https://linkedin.com/in/sairampillai" },
+  ]
+
+[params.homepage]
+  showRecent = true
+
+[params.article]
+  showBreadcrumbs = true
+  showEdit = true
+  editURL = "content"
+  editAppendPath = true
+
+[[menu.main]]
+  name = "Home"
+  pageRef = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "Blog"
+  pageRef = "posts"
+  weight = 10
+
+[[menu.main]]
+  name = "Tags"
+  pageRef = "tags"
+  weight = 20
+
+[[menu.main]]
+  name = "GitHub"
+  url = "https://github.com/sairampillai"
+  weight = 30
