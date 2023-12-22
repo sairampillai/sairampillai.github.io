@@ -62,11 +62,11 @@ jobs:
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Check public folder
         run: |
-          pwd && ls -a
+          pwd && ls -a && ls public
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./public
+          path: public
 
   # Deployment job
   deploy:
